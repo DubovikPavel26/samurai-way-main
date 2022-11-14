@@ -1,69 +1,32 @@
 import React from 'react';
 import s from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
+import {dialogsDataType, messageDataType} from "../../index";
 
-type DialogPropsType = {
-    name: string
-    id: string
+type DialogsPropsType = {
+    dialogs: Array<dialogsDataType>
+    messages: Array<messageDataType>
 }
 
-type dialogsDataType = {
-    id: string
-    name: string
-}
 
-type messageDataType = {
-    id: string
-    message: string
-}
-
-const Dialog = (props: DialogPropsType) => {
-    return (
-        <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
-        )
-
-}
-
-type MessagesPropsType = {
-    message: string
-}
-
-const Messages = (props: MessagesPropsType) => {
-    return (
-        <div className={s.message}>{props.message}</div>
-    )
-}
-const Dialogs = () => {
-    const dialogs: Array<dialogsDataType> = [
-        {id: '1',name: "Pasha"},
-        {id: '2',name: "Dima"},
-        {id: '3',name: "Sasha"},
-        {id: '5',name: "Dasha"},
-        {id: '6',name: "Glasha"}
-    ]
-
-    const message: Array<messageDataType> = [
-        {id: '1',message: "Hello"},
-        {id: '2',message: "How are you"},
-        {id: '3',message: "Mean"},
-    ]
-
+const Dialogs = (props: DialogsPropsType) => {
     return (
         <div className={s.dialogs}>
             <div className={s.users}>
 
-                {dialogs.map(el => {
+                {props.dialogs.map(el => {
                     return (
-                        <Dialog name={el.name} id={el.id}/>
+                        <DialogItem name={el.name} id={el.id}/>
                     )
                 })}
 
             </div>
             <div className={s.messeges}>
 
-                {message.map(el => {
+                {props.messages.map(el => {
                     return (
-                        <Messages message={el.message}/>
+                        <Message message={el.message}/>
                     )
                 })}
             </div>
