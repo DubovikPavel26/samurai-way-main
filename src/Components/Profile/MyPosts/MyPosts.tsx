@@ -1,13 +1,9 @@
 import React from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./post/Post";
-import {postDataType} from "../../../index";
+import {profilePageType} from "../../../redux/State";
 
-type MyPostsPropsType = {
-    posts: Array<postDataType>
-}
-
-const MyPosts = (props: MyPostsPropsType) => {
+const MyPosts = (props: profilePageType) => {
 
     return (
         <div className={s.postsBlock}>
