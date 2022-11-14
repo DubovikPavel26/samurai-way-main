@@ -7,6 +7,16 @@ type DialogPropsType = {
     id: string
 }
 
+type dialogsDataType = {
+    id: string
+    name: string
+}
+
+type messageDataType = {
+    id: string
+    message: string
+}
+
 const Dialog = (props: DialogPropsType) => {
     return (
         <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
@@ -20,24 +30,42 @@ type MessagesPropsType = {
 
 const Messages = (props: MessagesPropsType) => {
     return (
-        <div className={s.messege}>{props.message}</div>
+        <div className={s.message}>{props.message}</div>
     )
 }
 const Dialogs = () => {
+    const dialogs: Array<dialogsDataType> = [
+        {id: '1',name: "Pasha"},
+        {id: '2',name: "Dima"},
+        {id: '3',name: "Sasha"},
+        {id: '5',name: "Dasha"},
+        {id: '6',name: "Glasha"}
+    ]
+
+    const message: Array<messageDataType> = [
+        {id: '1',message: "Hello"},
+        {id: '2',message: "How are you"},
+        {id: '3',message: "Mean"},
+    ]
+
     return (
         <div className={s.dialogs}>
             <div className={s.users}>
-                <Dialog name={"Pasha"} id={"1"}/>
-                <Dialog name={"Dima"} id={"2"}/>
-                <Dialog name={"Sasha"} id={"3"}/>
-                <Dialog name={"Masha"} id={"4"}/>
-                <Dialog name={"Dasha"} id={"5"}/>
-                <Dialog name={"Glasha"} id={"6"}/>
+
+                {dialogs.map(el => {
+                    return (
+                        <Dialog name={el.name} id={el.id}/>
+                    )
+                })}
+
             </div>
             <div className={s.messeges}>
-                <Messages message={"Hello"}/>
-                <Messages message={"How are you"}/>
-                <Messages message={"Mean"}/>
+
+                {message.map(el => {
+                    return (
+                        <Messages message={el.message}/>
+                    )
+                })}
             </div>
         </div>
     );
