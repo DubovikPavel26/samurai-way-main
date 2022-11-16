@@ -48,7 +48,8 @@ const State: StateType = {
 }
 
 export let addPost = (message: string) => {
-    let newPost = {id: 3, title: message, number: 0}
-    let result = [...State.profilePage.posts, newPost]
+    debugger
+    let newPost = {id: '3', title: message, number: 0}
+    State.profilePage.posts.push(newPost)
 }
 export default State
