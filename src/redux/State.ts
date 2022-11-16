@@ -23,7 +23,6 @@ export type StateType = {
     dialogPage: dialogPageType
 }
 
-
 const State: StateType = {
     profilePage: {
         posts: [
@@ -48,4 +47,8 @@ const State: StateType = {
     }
 }
 
+export let addPost = (message: string) => {
+    let newPost = {id: 3, title: message, number: 0}
+    let result = [...State.profilePage.posts, newPost]
+}
 export default State
