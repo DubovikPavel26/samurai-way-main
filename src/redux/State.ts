@@ -1,3 +1,5 @@
+import {renderEntireThree} from "../render";
+
 export type messageType = {
     id: string
     message: string
@@ -50,6 +52,7 @@ const State: StateType = {
 export let addPost = (message: string) => {
     debugger
     let newPost = {id: '3', title: message, number: 0}
-    State.profilePage.posts.push(newPost)
+    State.profilePage.posts.push(newPost);
+    renderEntireThree(State)
 }
 export default State

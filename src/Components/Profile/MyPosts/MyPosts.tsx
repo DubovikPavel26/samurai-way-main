@@ -12,9 +12,9 @@ const MyPosts = (props: MyPostType) => {
     const linka = React.createRef<HTMLTextAreaElement>();
 
     const addPost = () => {
-        debugger
         if(linka.current){
-            props.addPost(linka.current.value)
+            props.addPost(linka.current.value);
+            linka.current.value = ''
         }
 
 }
